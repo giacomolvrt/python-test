@@ -5,6 +5,23 @@ from os import scandir
 def convert_date(timestamp):
     d = datetime.utcfromtimestamp(timestamp)
     formated_date = d.strftime('%d %b %Y')
+    #now = datetime.now() # current date and time
+
+    #year = now.strftime("%Y")
+    #print("year:", year)
+
+    #month = now.strftime("%m")
+    #print("month:", month)
+
+    #day = now.strftime("%d")
+    #print("day:", day)
+
+    #time = now.strftime("%H:%M:%S")
+    #print("time:", time)
+
+    #date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+    #print("date and time:",date_time)	
+    
     return formated_date
 
 def get_files():
