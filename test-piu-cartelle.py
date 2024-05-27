@@ -39,7 +39,7 @@ def test2():
                     #costruzione dati senza info sul percorso
                     #stringone = stringone + '{"nome_file":"'+entry.name+'", "dt_modifica":"'+str(convert_date(statinfo.st_mtime))+'"}'
                     #costruzione dati anche con il percorso
-                    stringone = stringone + '{"nome_file":"'+entry.name+'", "dt_modifica":"'+str(convert_date(statinfo.st_mtime))+', "percorso":"'+str(elem)+'"}'
+                    stringone = stringone + '{"nome_file":"'+entry.name+'", "dt_modifica":"'+str(convert_date(statinfo.st_mtime))+'", "percorso":"'+str(elem)+'"}'
                 else:
                     print('sconosciuto')
     #qui sono fuori dal for
@@ -48,5 +48,13 @@ def test2():
     print(f'num_file: {num_file}')
     return stringone
 
+
+
+file1 = open("outputfile", "w")
+
 a = test2()
-print(a)
+
+file1.writelines(a)
+file1.close() 
+
+print("Ho finito ciao.")
