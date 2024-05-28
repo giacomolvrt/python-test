@@ -9,8 +9,8 @@ def convert_date(timestamp):
     formated_date = d.strftime('%d/%m/%Y')
     return formated_date
 
-def test2():
-    basepath = '/VIRTUALBOX/'
+def test2(basepath):
+    #basepath = 'D:\\'
     albero = []
     num_folder = 1
     num_file = 0
@@ -29,7 +29,8 @@ def test2():
                 if entry.is_dir():
                     num_folder +=1
                     print(f'cartella: {entry.name}\t\t\t Last Modified: {convert_date(statinfo.st_mtime)}')
-                    albero.append(elem+entry.name+'/')
+                    if entry.name != 'System Volume Information' and entry.name != 'RECYCLER' and entry.name != 'autorun' and entry.name != '$RECYCLE.BIN' and entry.name != 'D:\foto/20181230SD32GB_S8_GIAC/Android/data/':
+                        albero.append(elem+entry.name+'/')
                 elif entry.is_file():
                     num_file +=1
                     #scommentare per stampare una riga per ogni file
@@ -48,13 +49,19 @@ def test2():
     print(f'num_file: {num_file}')
     return stringone
 
+elenco_percorsi = [
+    {
+        "nome_file":"PCNERO-2016-05-14_foto_video_S5",
+        "percorso":"D:\\PC-nero/disco_c/2016-05-14_foto_video_S5/"
+    }
+    ]
 
-
-file1 = open("outputfile", "w")
-
-a = test2()
-
-file1.writelines(a)
-file1.close() 
+#ciclo principale MAIN
+for parser in elenco_percorsi:
+    file1 = open(parser['nome_file']+".json", "w")
+    a = test2(parser['percorso'])
+    file1.writelines(a)
+    file1.close()
+    print("Percorso elaborato") 
 
 print("Ho finito ciao.")
