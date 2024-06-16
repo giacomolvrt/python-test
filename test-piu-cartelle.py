@@ -51,15 +51,15 @@ def test2(basepath):
 
 elenco_percorsi = [
     {
-        "nome_file":"PCNERO-2016-05-14_foto_video_S5",
-        "percorso":"D:\\PC-nero/disco_c/2016-05-14_foto_video_S5/"
+        "nome_file":"tutte_le_foto",
+        "percorso":"D:/foto/"
     }
     ]
 
 #ciclo principale MAIN
 for parser in elenco_percorsi:
-    file1 = open(parser['nome_file']+".json", "w")
     a = test2(parser['percorso'])
+    file1 = open("outputjson/"+parser['nome_file']+".json", "w", encoding='utf-8')
     file1.writelines(a)
     file1.close()
     print("Percorso elaborato") 
